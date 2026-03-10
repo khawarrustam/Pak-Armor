@@ -89,9 +89,9 @@ export default function VIPs() {
                                             <div className="bg-brand-gold w-14 sm:w-20 h-4 sm:h-5 transform -rotate-45 -translate-x-4 sm:-translate-x-5 translate-y-1 sm:translate-y-2" />
                                         </div>
 
-                                        <div className="aspect-[4/3] flex items-center justify-center p-3 sm:p-5 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative">
+                                        <div className="aspect-[4/3] flex items-center justify-center p-3 sm:p-5 bg-gradient-to-br from-[#1a1a1a] via-[#252525] to-[#1a1a1a] relative">
                                             {/* Shimmer skeleton */}
-                                            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 animate-pulse" />
+                                            <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] animate-pulse" />
                                             <img
                                                 src={vehicle.image}
                                                 alt={vehicle.name}
@@ -99,10 +99,6 @@ export default function VIPs() {
                                                 loading="lazy"
                                                 onLoad={(e) => e.target.previousElementSibling && (e.target.previousElementSibling.style.display = 'none')}
                                             />
-                                            {/* Hover overlay — only on non-touch */}
-                                            <div className="absolute inset-0 bg-brand-dark/60 opacity-0 group-hover:opacity-100 hidden sm:flex items-center justify-center transition-opacity duration-300 backdrop-blur-sm z-20">
-                                                <span className="text-white text-xs font-bold tracking-widest uppercase">View Details</span>
-                                            </div>
                                         </div>
 
                                         <div className="bg-brand-green-dark group-hover:bg-brand-gold transition-colors duration-300 p-2 sm:p-3">
