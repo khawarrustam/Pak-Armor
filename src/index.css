@@ -1,0 +1,131 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@theme {
+  --color-brand-dark: #0a0c0b;
+  --color-brand-green: #2d4a30;
+  --color-brand-green-light: #5a8f5e;
+  --color-brand-green-dark: #243625;
+  --color-brand-gold: #d4a24c;
+  --color-brand-gold-light: #e8c478;
+  --color-brand-gold-dark: #b07830;
+  --color-brand-gray: #f0efea;
+  --color-brand-gray-dark: #161616;
+  --color-brand-red: #c0392b;
+  --color-brand-success: #27ae60;
+  --color-surface-glass: rgba(255, 255, 255, 0.04);
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Custom Typography Utility Classes */
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-brand-dark);
+    color: var(--color-brand-gray);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: white;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  /* Responsive base font size for fluid scaling */
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
+  /* Global touch target minimum */
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Reset min sizes for inline elements that shouldn't be constrained */
+  a:not(.btn),
+  nav a,
+  footer a,
+  span a {
+    min-height: unset;
+    min-width: unset;
+  }
+}
+
+/* Custom Selection Color */
+::selection {
+  background-color: var(--color-brand-gold);
+  color: #fff;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-green);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-gold);
+}
+
+/* Client Logo Marquee Animation */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Hide scrollbar for filter pill containers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive section spacing utility */
+.section-py {
+  padding-top: clamp(2.5rem, 5vw, 6rem);
+  padding-bottom: clamp(2.5rem, 5vw, 6rem);
+}
