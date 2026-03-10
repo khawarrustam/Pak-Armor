@@ -61,8 +61,8 @@ export default function VIPs() {
                             key={f}
                             onClick={() => setActiveFilter(f)}
                             className={`px-4 sm:px-5 py-2 rounded-full text-[0.6rem] sm:text-xs font-bold tracking-[0.1em] sm:tracking-[0.15em] uppercase border transition-all duration-300 whitespace-nowrap flex-shrink-0 ${activeFilter === f
-                                    ? 'bg-brand-gold text-white border-brand-gold'
-                                    : 'bg-transparent text-brand-gray/60 border-white/10 hover:border-brand-gold/50 hover:text-brand-gold'
+                                ? 'bg-brand-gold text-white border-brand-gold'
+                                : 'bg-transparent text-brand-gray/60 border-white/10 hover:border-brand-gold/50 hover:text-brand-gold'
                                 }`}
                         >
                             {f}
@@ -89,10 +89,18 @@ export default function VIPs() {
                                             <div className="bg-brand-gold w-14 sm:w-20 h-4 sm:h-5 transform -rotate-45 -translate-x-4 sm:-translate-x-5 translate-y-1 sm:translate-y-2" />
                                         </div>
 
-                                        <div className="aspect-[4/3] flex items-center justify-center p-3 sm:p-5 bg-white relative">
-                                            <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-700" />
+                                        <div className="aspect-[4/3] flex items-center justify-center p-3 sm:p-5 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative">
+                                            {/* Shimmer skeleton */}
+                                            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 animate-pulse" />
+                                            <img
+                                                src={vehicle.image}
+                                                alt={vehicle.name}
+                                                className="w-full h-full object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-700 relative z-10"
+                                                loading="lazy"
+                                                onLoad={(e) => e.target.previousElementSibling && (e.target.previousElementSibling.style.display = 'none')}
+                                            />
                                             {/* Hover overlay — only on non-touch */}
-                                            <div className="absolute inset-0 bg-brand-dark/60 opacity-0 group-hover:opacity-100 hidden sm:flex items-center justify-center transition-opacity duration-300 backdrop-blur-sm">
+                                            <div className="absolute inset-0 bg-brand-dark/60 opacity-0 group-hover:opacity-100 hidden sm:flex items-center justify-center transition-opacity duration-300 backdrop-blur-sm z-20">
                                                 <span className="text-white text-xs font-bold tracking-widest uppercase">View Details</span>
                                             </div>
                                         </div>

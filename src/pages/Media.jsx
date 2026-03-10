@@ -107,14 +107,22 @@ export default function Media() {
                         <motion.div
                             key={img.src}
                             initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true, margin: '100px' }}
                             transition={{ delay: i * 0.03, duration: 0.4 }}
-                            layout
-                            className="group relative bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300"
+                            className="group relative rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300"
                             onClick={() => setSelectedIndex(i)}
                         >
-                            <div className="aspect-[4/3] flex items-center justify-center p-3 sm:p-4 bg-white">
-                                <img src={img.src} alt={img.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                            <div className="aspect-[4/3] flex items-center justify-center p-4 sm:p-5 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative">
+                                {/* Shimmer skeleton */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 animate-pulse" />
+                                <img
+                                    src={img.src}
+                                    alt={img.name}
+                                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 relative z-10 drop-shadow-md"
+                                    loading="lazy"
+                                    onLoad={(e) => e.target.previousElementSibling && (e.target.previousElementSibling.style.display = 'none')}
+                                />
                             </div>
                             {/* Hover overlay — hidden on touch */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 hidden sm:flex flex-col justify-end transition-opacity duration-300 p-4">
